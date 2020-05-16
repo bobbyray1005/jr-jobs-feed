@@ -23,7 +23,7 @@ async function fetchGithub(){
         const jobTitle=job.title.toLowerCase();
         
         if(jobTitle.includes('senior')||jobTitle.includes('sr.')||jobTitle.includes('manager')
-        ||jobTitle.includes('architect')){
+        ||jobTitle.includes('architect')||jobTitle.includes('lead')){
             return false;
         }
         return true;

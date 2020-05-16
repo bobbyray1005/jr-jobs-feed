@@ -7,8 +7,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 
 const useStyles=makeStyles({
     root:{
-        minWidth:275,
-        margin:10
+        maxWidth:800,
+        margin:20,
+    
     },
     title:{
         fontSize:18,

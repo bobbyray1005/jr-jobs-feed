@@ -22,8 +22,8 @@ export default function Jobs({jobs}) {
     const theme = useTheme();
     const [activeStep, setActiveStep] = React.useState(0);
     const numJobs=jobs.length;
-    const numPages=Math.ceil(numJobs/30);
-    const jobsOnPage=jobs.slice(activeStep*30,(activeStep*30)+30)
+    const numPages=Math.ceil(numJobs/20);
+    const jobsOnPage=jobs.slice(activeStep*20,(activeStep*20)+20)
 
     //modal
 
@@ -36,23 +36,31 @@ export default function Jobs({jobs}) {
     const handleClose = () => {
       setOpen(false);
     };
+    function scrollToTop () {
+      const c = document.documentElement.scrollTop || document.body.scrollTop;
+      if (c > 0) {
+        window.requestAnimationFrame(scrollToTop);
+        window.scrollTo(0, c - c / 8);
+      }
+    };
 
     //pagination
     const handleNext = () => {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
+      scrollToTop();
     };
   
     const handleBack = () => {
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
+      scrollToTop();
     };
   
     return (
         <div className="jobs">
             <JobModal open={open} job={selectedJob} handleClose={handleClose}/>
-            <Typography variant="h4" align="center" color="inherit">
-                SWE Jobs for JR Developers
-            </Typography>
+            
             <Typography className={classes.page}>Found {numJobs} jobs</Typography>
+            <Typography className={classes.page}>Page {activeStep+1} of {numPages}</Typography>
             {
                 jobsOnPage.map(job=><Job job={job} onClick={()=>{
                     handleClickOpen()

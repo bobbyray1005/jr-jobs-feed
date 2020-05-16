@@ -1,5 +1,6 @@
 import React from 'react';
 import Jobs from './components/Jobs';
+import NavBar from './components/NavBar'
 
 import './App.css';
 const JOB_API_URI='http://localhost:4000/jobs'
@@ -19,6 +20,7 @@ function App() {
   },[])
   return (
     <div className="App">
+      <NavBar />
       <Jobs jobs={jobList}/>
     </div>
   );
