@@ -1,6 +1,8 @@
 # jr-jobs-feed
 Jobs feed for junior developers using react express and redis from github jobs api
 
+## credit
+Aaron Jack-Code drip
 
 ## requirements
 follwing should be installed on computer
